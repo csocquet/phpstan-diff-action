@@ -1,0 +1,1 @@
+# phpstan-diff-action
