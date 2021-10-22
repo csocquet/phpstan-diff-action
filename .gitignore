@@ -1,3 +1,5 @@
 .idea/
+__test__/_temp
+__test__/**/*.js
 lib/
 node_modules/

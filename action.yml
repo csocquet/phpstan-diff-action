@@ -5,10 +5,10 @@ branding:
   color: 'blue'
   icon: 'check-square'
 inputs:
-  old-report:
-    description: 'Previous PHPStan JSON report'
+  origin_report:
+    description: 'Original PHPStan JSON report'
     required: true
-  new-report:
+  new_report:
     description: 'New PHPStan JSON report'
     required: true
 runs:
