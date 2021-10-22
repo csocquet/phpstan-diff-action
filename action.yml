@@ -1,0 +1,16 @@
+name: 'PHPStan diff'
+description: 'Compare two PHPStan json report and return differences'
+author: 'Cedric SOCQUET'
+branding:
+  color: 'blue'
+  icon: 'check-square'
+inputs:
+  old-report:
+    description: 'Previous PHPStan JSON report'
+    required: true
+  new-report:
+    description: 'New PHPStan JSON report'
+    required: true
+runs:
+  using: 'node12'
+  main: 'src/main.js'
