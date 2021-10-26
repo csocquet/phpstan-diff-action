@@ -1,0 +1,26 @@
+name: Build and test
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+      - releases/*
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm build
+      - run: npm test
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./
+        with:
+          origin_report: ./__test__/reports/origin.json
+          new_report: ./__test__/reports/new-c.json
+        continue-on-error: true
