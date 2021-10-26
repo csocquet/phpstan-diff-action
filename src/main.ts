@@ -2,12 +2,40 @@
 
 import * as core from '@actions/core';
 import * as phpstan from './phpstan';
+import * as fs from "fs";
 
-try {
-    const oldReportPath = core.getInput('old-report', {trimWhitespace: true});
-    const oldReport = phpstan.readJsonReport(oldReportPath);
+export default async function main() {
+    try {
+        await run();
+    } catch (err: any) {
+        core.setFailed(err.message);
+    }
+}
 
-    const newReportPath = core.getInput('new-report', {trimWhitespace: true});
+export async function run() {
+    const originReportPath = core.getInput('origin_report', {trimWhitespace: true});
+    if (!originReportPath) {
+        throw new Error('Origin report path is required');
+    }
+
+    try {
+        fs.accessSync(originReportPath, fs.constants.R_OK);
+    } catch (err) {
+        throw new Error('Origin report is not accessible for read');
+    }
+
+    const newReportPath = core.getInput('new_report', {trimWhitespace: true});
+    if (!newReportPath) {
+        throw new Error('New report path is required');
+    }
+
+    try {
+        fs.accessSync(newReportPath, fs.constants.R_OK);
+    } catch (err) {
+        throw new Error('New report is not accessible for read');
+    }
+
+    const oldReport = phpstan.readJsonReport(originReportPath);
     const newReport = phpstan.readJsonReport(newReportPath);
 
     let resolvedErrors = oldReport.diff(newReport);
@@ -29,7 +57,6 @@ try {
         }
         core.endGroup();
     }
-
-} catch (err: any) {
-    core.setFailed(err);
 }
+
+main();

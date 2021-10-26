@@ -1,0 +1,54 @@
+{
+  "totals": {
+    "errors": 0,
+    "file_errors": 6
+  },
+  "files": {
+    "ClassA.php": {
+      "errors": 2,
+      "messages": [
+        {
+          "message": "Error #1 on ClassA",
+          "line": 1,
+          "ignorable": true
+        },
+        {
+          "message": "Error #2 on ClassA",
+          "line": 2,
+          "ignorable": true
+        }
+      ]
+    },
+    "ClassB.php": {
+      "errors": 2,
+      "messages": [
+        {
+          "message": "Error #1 on ClassB",
+          "line": 1,
+          "ignorable": true
+        },
+        {
+          "message": "Error #2 on ClassB",
+          "line": 2,
+          "ignorable": true
+        }
+      ]
+    },
+    "ClassC.php": {
+      "errors": 2,
+      "messages": [
+        {
+          "message": "Error #1 on ClassC",
+          "line": 1,
+          "ignorable": true
+        },
+        {
+          "message": "Error #2 on ClassC",
+          "line": 2,
+          "ignorable": true
+        }
+      ]
+    }
+  },
+  "errors": []
+}
